@@ -1,0 +1,7 @@
+INDEX VERSION 1.122+D:\STS_JUNO\Workspace\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+129098444.index
+3921642464.index
+301807071.index
+755015107.index
+2580903791.index
+1891029594.index

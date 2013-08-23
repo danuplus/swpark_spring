@@ -1,0 +1,12 @@
+select * from tab;
+
+create sequence memo_no_seq
+start with 1
+increment by 1;
+
+create table memo
+(no number(10) constraint memo_no_pk primary key,
+ memo varchar2(4000),
+ writer varchar2(100),
+ password varchar2(100),
+ wdate date);

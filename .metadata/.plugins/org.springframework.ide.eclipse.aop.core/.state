@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aop-reference-model>
+<aop-project name="Board03"/>
+<aop-project name="Memo"/>
+<aop-project name="Board02"/>
+<aop-project name="Example001"/>
+<aop-project name="Board04"/>
+<aop-project name="Board01"/>
+</aop-reference-model>

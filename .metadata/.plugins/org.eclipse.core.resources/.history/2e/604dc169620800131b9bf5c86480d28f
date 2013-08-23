@@ -1,0 +1,5 @@
+package com.ahsan.board01.domain;
+
+public class Board {
+
+}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data-sources>
+	<data-source id="oracle_thin-1376740550366--872847628" provider="oracle" driver="oracle_thin" name="Oracle - KRAS" create-date="1376740550366" save-password="true" show-system-objects="true" read-only="false">
+		<connection host="118.130.116.75" port="1535" server="" database="KRAS" url="jdbc:oracle:thin:@118.130.116.75:1535:KRAS" user="auto" password="EhESL0BWUBll8w==" home="C:\oracle\product\11.2.0\client_1" type="dev">
+			<property name="@dbeaver-sid-service@" value="SID"/>
+			<property name="@dbeaver-connection-type@" value="BASIC"/>
+			<property name="@dbeaver-check-schema-content@" value="true"/>
+			<property name="@dbeaver-always-show-dba@" value="false"/>
+		</connection>
+	</data-source>
+</data-sources>

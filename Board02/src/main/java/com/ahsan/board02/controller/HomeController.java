@@ -1,0 +1,152 @@
+package com.ahsan.board02.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.ahsan.board02.dao.BoardDAO;
+import com.ahsan.board02.domain.Board;
+
+/**
+ * Handles requests for the application home page.
+ */
+@Controller
+public class HomeController {
+	
+	@Autowired
+	private BoardDAO boardDAO;
+	
+	@RequestMapping(value = {"/", "index"}, method = RequestMethod.GET)
+	public String index(@RequestParam(value = "page", required = false, defaultValue = "1") Integer page,
+			Model model) {
+		model.addAttribute("page", page);
+		model.addAttribute("lastPage", boardDAO.getMaxPage());
+		model.addAttribute("boards", boardDAO.getBoardsByPage(page.intValue()));
+		return "index";
+	}
+	
+	@RequestMapping(value = "view", method = RequestMethod.GET) 
+	public String view(@RequestParam(value = "no") Integer no, 
+			@RequestParam(value = "page", required = false, defaultValue = "1") Integer page,
+			Model model) {
+		
+		model.addAttribute("page", page); // 직전 목록으로 돌아가기 위한 페이지 번호
+		
+		Board board = boardDAO.getBoardByNo(no.intValue());	// 줄 바꿈 처리
+		board.setContent(board.getContent().replace("\r\n",  "<br />"));
+		
+		model.addAttribute("board", board);
+		boardDAO.raiseLookUpCount(no.intValue()); // 조회수를 1증가시킴.
+		return "view";
+	}
+	
+	@RequestMapping(value = "add", method = RequestMethod.GET)
+	public String add(@RequestParam(value = "page", required = false, defaultValue = "1") Integer page, 
+			Model model) {
+		model.addAttribute("page", page);
+		return "add";
+	}
+	
+	@RequestMapping(value = "add", method = RequestMethod.POST)
+	public String save(@RequestParam(value = "writer") String writer, 
+			@RequestParam(value = "password") String password, 
+			@RequestParam(value = "title") String title, 
+			@RequestParam(value = "content") String content) {
+		Board board = new Board(0, title, content, writer, password, null, 0, 0, 0, 0, 0);
+		boardDAO.addBoard(board);
+		return "redirect:/index";
+	}
+	
+	@RequestMapping(value = "answer", method = RequestMethod.GET)
+	public String answer(@RequestParam(value = "no") Integer no, 
+			@RequestParam(value = "page", required = false, defaultValue = "1") Integer page, 
+			Model model) {
+		model.addAttribute("no", no); // 원글의 번호
+		model.addAttribute("page", page); // 직전 목록으로 돌아가기 위한 페이지 번호
+		model.addAttribute("title", "[답글] " + boardDAO.getBoardByNo(no.intValue()).getTitle());
+		return "answer";
+	}
+	
+	@RequestMapping(value = "answer", method = RequestMethod.POST)
+	public String saveAnswer(@RequestParam(value = "no") Integer no,
+			@RequestParam(value = "writer") String writer, 
+			@RequestParam(value = "password") String password, 
+			@RequestParam(value = "title") String title, 
+			@RequestParam(value = "content") String content,
+			@RequestParam(value = "page") Integer page) {
+		
+		Board board = new Board(0, title, content, writer, password, null, 0, 0, 0, 0, no.intValue());
+		
+		boardDAO.addBoard(board);
+		return "redirect:/index?page=" + page.intValue();
+	}
+	
+	@RequestMapping(value = "check", method = RequestMethod.GET)
+	public String check(@RequestParam(value = "no") Integer no,
+			@RequestParam(value = "page") Integer page,
+			@RequestParam(value = "job") String job,
+			Model model) {
+		model.addAttribute("page", page);
+		model.addAttribute("no", no);
+		model.addAttribute("job", job);
+		return "check";
+	}
+	
+	@RequestMapping(value = "update", method = RequestMethod.POST)
+	public String update(@RequestParam(value = "no") Integer no,
+			@RequestParam(value = "page") Integer page,
+			@RequestParam(value = "password") String password,
+			Model model) {
+
+		model.addAttribute("page", page);
+		model.addAttribute("no", no);
+		
+		if(boardDAO.checkPassword(no.intValue(), password)) {
+			model.addAttribute("board", boardDAO.getBoardByNo(no.intValue()));
+			return "edit";
+		} else {
+			model.addAttribute("job", "update");
+			return "fail";
+		}
+	}
+	
+	@RequestMapping(value = "delete", method = RequestMethod.POST)
+	public String delete(@RequestParam(value = "no") Integer no,
+			@RequestParam(value = "page") Integer page,
+			@RequestParam(value = "password") String password,
+			Model model) {
+		
+		if(boardDAO.checkPassword(no.intValue(), password)) {
+			boardDAO.removeBoard(no.intValue());
+			return "redirect:/index?page=" + page.intValue();
+		} else {
+			model.addAttribute("no", no);
+			model.addAttribute("page", page);
+			model.addAttribute("job", "delete");
+			return "fail";
+		}
+	}
+	
+	@RequestMapping(value = "edit", method = RequestMethod.POST)
+	public String edit(@RequestParam(value = "page") Integer page, 
+			@RequestParam(value = "no") Integer no, 
+			@RequestParam(value = "writer") String writer, 
+			@RequestParam(value = "password") String password, 
+			@RequestParam(value = "title") String title, 
+			@RequestParam(value = "content") String content) {
+		
+		Board board = new Board();
+		board.setNo(no.intValue());
+		board.setWriter(writer);
+		board.setPassword(password);
+		board.setTitle(title);
+		board.setContent(content);
+		boardDAO.modifyBoard(board);
+		
+		return "redirect:/index?page=" + page.intValue(); 
+	}
+	
+}

@@ -1,0 +1,5 @@
+package com.ahsan.board01.persistence;
+
+public interface BoardDAO {
+
+}

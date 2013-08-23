@@ -1,0 +1,8 @@
+#Tomcat publish data
+#Fri Aug 23 21:26:51 KST 2013
+org.eclipse.jst.jee.server\:Board04=D\:\\STS_JUNO\\vfabric-tc-server-developer-2.9.2.RELEASE\\base-instance\\wtpwebapps\\Board04
+org.eclipse.jst.jee.server\:Example001=D\:\\STS_JUNO\\vfabric-tc-server-developer-2.9.2.RELEASE\\base-instance\\wtpwebapps\\Example001
+org.eclipse.jst.jee.server\:Board03=D\:\\STS_JUNO\\vfabric-tc-server-developer-2.9.2.RELEASE\\base-instance\\wtpwebapps\\Board03
+org.eclipse.jst.jee.server\:Board02=D\:\\STS_JUNO\\vfabric-tc-server-developer-2.9.2.RELEASE\\base-instance\\wtpwebapps\\Board02
+org.eclipse.jst.jee.server\:Board01=D\:\\STS_JUNO\\vfabric-tc-server-developer-2.9.2.RELEASE\\base-instance\\wtpwebapps\\Board01
+org.eclipse.jst.jee.server\:Memo=D\:\\STS_JUNO\\vfabric-tc-server-developer-2.9.2.RELEASE\\base-instance\\wtpwebapps\\Memo

@@ -1,0 +1,19 @@
+package com.ahsan.board01.persistence;
+
+import java.util.List;
+
+public class BoardDAOImpl extends JdbcDaoSupport implements BoardDAO {
+
+	private static final LINES_PER_PAGE = 15;
+	
+	@Override
+	public List<Board> getBoardByPage(int page) {
+		final String sqlString = "select no, title, notice, writer, password, wdate, ref " +
+				   "from (select rownum rn, t1.* " +
+				   "      from (select * from board order by no desc) t1 " +
+				   "      where rownum <= ?) " +
+				   "where rn >= ?";
+		int start = (page -1) * LINES_PER_PAGE + 1;
+		
+	}
+}
