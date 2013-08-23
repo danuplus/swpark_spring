@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <aop-reference-model>
+<aop-project name="validation"/>
 <aop-project name="Board03"/>
 <aop-project name="Memo"/>
 <aop-project name="Board02"/>

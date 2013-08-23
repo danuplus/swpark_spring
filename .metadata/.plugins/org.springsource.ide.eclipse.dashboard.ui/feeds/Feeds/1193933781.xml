@@ -72,7 +72,7 @@
 		<guid isPermaLink="false">http://blog.springsource.org/?p=13986</guid>
 		<description><![CDATA[Overview As I wrote previously, a WebSocket API is only the starting point for WebSocket-style messaging applications. Many practical challenges remain. As one Tomcat mailing list user mused recently: it does seem to me that websockets is still not really &#034;production-ready&#034;, (I am not talking about the Tomcat implementation per se, but more generally) &#8230;  <a href="http://blog.springsource.org/2013/07/24/spring-framework-4-0-m2-websocket-messaging-architectures/"><em>Read more...</em></a>]]></description>
 		<wfw:commentRss>http://blog.springsource.org/2013/07/24/spring-framework-4-0-m2-websocket-messaging-architectures/feed/</wfw:commentRss>
-		<slash:comments>39</slash:comments>
+		<slash:comments>40</slash:comments>
 		</item>
 		<item>
 		<title>Reactor 1.0.0.M1 &#8211; a foundation for asynchronous fast-data applications on the JVM</title>
@@ -115,7 +115,7 @@
 		<guid isPermaLink="false">http://blog.springsource.org/?p=13894</guid>
 		<description><![CDATA[In this post, I will discuss how to make your Spring Security Java configuration more readable. The post is intended to elaborate on a point from Spring Security Java Config Preview: Web Security where I stated: By formatting our Java configuration code it is much easier to read. It can be read similar to the  <a href="http://blog.springsource.org/2013/07/11/spring-security-java-config-preview-readability/"><em>Read more...</em></a>]]></description>
 		<wfw:commentRss>http://blog.springsource.org/2013/07/11/spring-security-java-config-preview-readability/feed/</wfw:commentRss>
-		<slash:comments>18</slash:comments>
+		<slash:comments>19</slash:comments>
 		</item>
 		<item>
 		<title>Eclipse Quick Search</title>

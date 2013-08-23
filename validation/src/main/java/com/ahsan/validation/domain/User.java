@@ -1,0 +1,71 @@
+package com.ahsan.validation.domain;
+
+import java.io.Serializable;
+
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotBlank;
+
+public class User implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private String name;
+	private String password;
+	private String email;
+	private String phone;
+	
+	public User() {}
+	
+	public User(String name, String password, String email, String phone) {
+		this.name = name;
+		this.password = password;
+		this.email = email;
+		this.phone = phone;
+	}
+
+	@NotBlank(message="{error.user.name}")
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@NotBlank(message="{error.user.empty}")
+	@Size(min=8, max=20, message="{error.user.password}")
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	@NotBlank(message="{error.user.email}")
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	@NotBlank(message="{error.user.phone}")
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	@Override
+	public String toString() {
+		return "User [name=" + name + ", password=" + password + ", email="
+				+ email + ", phone=" + phone + "]";
+	}
+
+}
